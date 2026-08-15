@@ -10,6 +10,7 @@ export const SITE = {
   certifications: [
     "Académie franco-suisse de sophrologie",
     "Hypsos France — Certification RNCP",
+    "Formation TDAH — HyperSupers TDAH France (2025)",
   ],
   contact: {
     email: "__A_COMPLETER__",
