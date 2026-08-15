@@ -40,6 +40,7 @@ export const AUDIENCE = [
   "Personnes confrontées à des troubles du sommeil",
   "Étudiants et professionnels en période d'examens ou d'échéances importantes",
   "Femmes enceintes souhaitant se préparer sereinement à l'accouchement",
+  "Personnes concernées par le TDAH et leurs aidants",
   "Sportifs souhaitant optimiser leur préparation mentale",
   "Toute personne curieuse de développer des outils de mieux-être",
 ] as const;
