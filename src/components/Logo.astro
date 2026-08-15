@@ -1,11 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import logoMark from "@/assets/logo-mark.png";
+
 /**
- * Lockup de marque provisoire (mark + wordmark texte), construit à partir de la palette
- * et de la typographie déduites du logo fourni.
- *
- * Le fichier du logo original n'a pas pu être récupéré comme asset binaire dans cet
- * environnement : remplacer ci-dessous par le vrai logo (ex. /logo.svg) dès qu'il est
- * disponible, en conservant ses proportions d'origine.
+ * Le mark raster (src/assets/logo-mark.png, recadré depuis le vrai logo)
+ * a un fond blanc opaque : il se fond naturellement sur les fonds clairs
+ * (header, hero) mais pas sur le fond sombre du footer. Le footer garde
+ * donc un tracé SVG transparent équivalent, adapté aux couleurs claires.
  */
 interface Props {
   variant?: "header" | "footer" | "hero";
@@ -14,7 +15,7 @@ interface Props {
 
 const { variant = "header", class: className = "" } = Astro.props;
 
-const markSize = variant === "hero" ? 56 : 40;
+const markHeight = variant === "hero" ? 72 : 44;
 const wordmarkClass =
   variant === "hero"
     ? "text-5xl sm:text-6xl"
@@ -24,38 +25,29 @@ const wordmarkClass =
 ---
 
 <span class:list={["inline-flex items-center gap-3", className]}>
-  <svg
-    width={markSize}
-    height={markSize}
-    viewBox="0 0 64 64"
-    aria-hidden="true"
-    class="shrink-0"
-  >
-    <circle
-      cx="32"
-      cy="32"
-      r="24"
-      fill="none"
-      stroke={variant === "footer" ? "#AEC0B5" : "#4F6259"}
-      stroke-width="1.4"
-      stroke-dasharray="147 4"
-    ></circle>
-    <path
-      d="M32 20c-4.5 3.2-8 7.6-8 12.8 0 5.3 3.6 8.6 8 8.6s8-3.3 8-8.6c0-5.2-3.5-9.6-8-12.8Z"
-      fill="none"
-      stroke={variant === "footer" ? "#E5D3BA" : "#4F6259"}
-      stroke-width="1.8"
-      stroke-linecap="round"
-    ></path>
-    <circle
-      cx="32"
-      cy="18.5"
-      r="3.6"
-      fill="none"
-      stroke={variant === "footer" ? "#D8BD9B" : "#B98F63"}
-      stroke-width="1.6"
-    ></circle>
-  </svg>
+  {
+    variant === "footer" ? (
+      <svg width={markHeight} height={markHeight} viewBox="0 0 64 64" aria-hidden="true" class="shrink-0">
+        <circle cx="32" cy="32" r="24" fill="none" stroke="#AEC0B5" stroke-width="1.4" stroke-dasharray="147 4" />
+        <path
+          d="M32 20c-4.5 3.2-8 7.6-8 12.8 0 5.3 3.6 8.6 8 8.6s8-3.3 8-8.6c0-5.2-3.5-9.6-8-12.8Z"
+          fill="none"
+          stroke="#E5D3BA"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+        <circle cx="32" cy="18.5" r="3.6" fill="none" stroke="#D8BD9B" stroke-width="1.6" />
+      </svg>
+    ) : (
+      <Image
+        src={logoMark}
+        alt=""
+        height={markHeight}
+        width={Math.round(markHeight * (logoMark.width / logoMark.height))}
+        class="shrink-0"
+      />
+    )
+  }
   <span class="leading-none">
     <span class={`font-script ${wordmarkClass} ${variant === "footer" ? "text-cream-50" : "text-sage-800"}`}>
       Sophrologie
