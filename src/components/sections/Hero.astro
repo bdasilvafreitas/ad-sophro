@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Button from "@/components/Button.astro";
+import logo from "@/assets/logo.png";
 import { SITE } from "@/data/site";
 ---
 
@@ -29,25 +31,9 @@ import { SITE } from "@/data/site";
     </div>
 
     <div class="relative mx-auto aspect-square w-full max-w-md">
-      <div
-        class="flex h-full w-full items-center justify-center rounded-full border border-sage-300 bg-sage-50"
-      >
-        <svg viewBox="0 0 200 200" class="h-2/3 w-2/3" aria-hidden="true">
-          <circle cx="100" cy="100" r="78" fill="none" stroke="#AEC0B5" stroke-width="1" />
-          <path
-            d="M100 58c-16 11-28 27-28 46 0 19 12.5 31 28 31s28-12 28-31c0-19-12-35-28-46Z"
-            fill="none"
-            stroke="#4F6259"
-            stroke-width="2.4"
-            stroke-linecap="round"
-          ></path>
-          <circle cx="100" cy="48" r="11" fill="none" stroke="#B98F63" stroke-width="2.2" />
-        </svg>
+      <div class="flex h-full w-full items-center justify-center rounded-[2.5rem] bg-white p-10 shadow-card">
+        <Image src={logo} alt="AD Sophrologie" width={420} height={420} class="h-full w-full object-contain" />
       </div>
-      <!--
-        Mark provisoire (voir src/components/Logo.astro). Remplacer par le
-        vrai logo / une photo professionnelle dès que disponible.
-      -->
     </div>
   </div>
 </section>
