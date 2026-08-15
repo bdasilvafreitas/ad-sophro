@@ -1,0 +1,109 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import ToComplete from "@/components/ToComplete.astro";
+import { SITE } from "@/data/site";
+
+/**
+ * Page à faire relire par un professionnel du droit (ou vérifier via une
+ * source officielle, ex. service-public.fr / URSSAF) avant mise en ligne :
+ * le contenu ci-dessous est une structure standard pour un site vitrine
+ * d'un professionnel indépendant en France, pas un conseil juridique.
+ */
+---
+
+<BaseLayout
+  title="Mentions légales — AD Sophrologie"
+  description="Mentions légales du site AD Sophrologie, cabinet de sophrologie d'Amandine Dabrowski."
+>
+  <Header />
+  <main id="contenu">
+    <section class="section-padding">
+      <div class="container-site max-w-3xl">
+        <h1 class="text-3xl font-medium text-sage-900 sm:text-4xl">Mentions légales</h1>
+
+        <div class="prose-legal mt-10 space-y-10 text-sage-700">
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">1. Éditeur du site</h2>
+            <p class="mt-3 leading-relaxed">
+              Le présent site est édité par {SITE.practitionerName}, exerçant sous le nom commercial{" "}
+              {SITE.businessName}.
+            </p>
+            <ul class="mt-3 space-y-1.5">
+              <li>Statut juridique : <ToComplete label="statut juridique / forme d'exercice" /></li>
+              <li>Numéro SIRET : <ToComplete label="numéro SIRET" /></li>
+              <li>Adresse du siège / cabinet : <ToComplete label="adresse" /></li>
+              <li>Téléphone : <ToComplete label="téléphone" /></li>
+              <li>Email : <ToComplete label="email" /></li>
+              <li>
+                Numéro de TVA intracommunautaire (le cas échéant) :{" "}
+                <ToComplete label="TVA intracommunautaire" />
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">2. Directeur de la publication</h2>
+            <p class="mt-3 leading-relaxed">{SITE.practitionerName}.</p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">3. Hébergement</h2>
+            <p class="mt-3 leading-relaxed">
+              Le site est hébergé par : <ToComplete label="nom, adresse et contact de l'hébergeur (ex. Netlify, Vercel)" />
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">4. Propriété intellectuelle</h2>
+            <p class="mt-3 leading-relaxed">
+              L'ensemble des contenus présents sur ce site (textes, logo, mise en page, éléments
+              graphiques) est protégé au titre du droit d'auteur. Toute reproduction, même partielle,
+              est soumise à autorisation préalable de l'éditeur du site.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">5. Données personnelles</h2>
+            <p class="mt-3 leading-relaxed">
+              Le traitement des données personnelles collectées via ce site (notamment via le
+              formulaire de contact) est détaillé dans notre{" "}
+              <a href="/politique-confidentialite" class="underline hover:text-sage-900">
+                politique de confidentialité
+              </a>
+              .
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">6. Cookies</h2>
+            <p class="mt-3 leading-relaxed">
+              À ce jour, ce site n'utilise aucun cookie de mesure d'audience ni de traceur publicitaire.
+              Cette section sera mise à jour si un outil d'analyse de fréquentation venait à être
+              installé.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">7. Limitation de responsabilité</h2>
+            <p class="mt-3 leading-relaxed">
+              Les informations présentées sur ce site le sont à titre informatif et ne sauraient se
+              substituer à un avis médical ou psychothérapeutique. L'éditeur s'efforce d'assurer
+              l'exactitude des informations diffusées mais ne peut en garantir l'exhaustivité.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">8. Droit applicable</h2>
+            <p class="mt-3 leading-relaxed">
+              Le présent site est soumis au droit français. En cas de litige, et à défaut d'accord
+              amiable, les tribunaux français seront seuls compétents.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

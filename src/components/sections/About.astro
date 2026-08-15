@@ -1,0 +1,45 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+import ToComplete from "@/components/ToComplete.astro";
+import { SITE } from "@/data/site";
+---
+
+<section id="a-propos" class="section-padding bg-sage-50">
+  <div class="container-site grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div class="mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] bg-sage-200/60">
+      <!-- __A_COMPLETER__ : remplacer par une photo professionnelle d'Amandine Dabrowski -->
+      <div class="flex h-full w-full items-center justify-center">
+        <ToComplete label="photo de la sophrologue" />
+      </div>
+    </div>
+
+    <div>
+      <SectionHeading
+        align="left"
+        eyebrow="Qui suis-je"
+        title={`${SITE.practitionerName}, sophrologue`}
+      />
+      <div class="mt-6 space-y-4 text-lg leading-relaxed text-sage-700">
+        <p><ToComplete label="présentation et parcours d'Amandine Dabrowski" /></p>
+        <p>
+          Diplômée en {SITE.graduationYear} de l'
+          <strong class="text-sage-900">Académie franco-suisse de sophrologie</strong>
+           et certifiée RNCP par <strong class="text-sage-900">Hypsos France</strong>, j'accompagne
+          celles et ceux qui souhaitent retrouver calme, équilibre et confiance en eux, en{" "}
+          {SITE.zone}.
+        </p>
+      </div>
+
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        <li class="flex items-start gap-2 text-sm text-sage-700">
+          <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-sand-600"></span>
+          Académie franco-suisse de sophrologie
+        </li>
+        <li class="flex items-start gap-2 text-sm text-sage-700">
+          <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-sand-600"></span>
+          Hypsos France — Certification RNCP
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

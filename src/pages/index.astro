@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Hero from "@/components/sections/Hero.astro";
+import About from "@/components/sections/About.astro";
+import WhatIsSophrology from "@/components/sections/WhatIsSophrology.astro";
+import Benefits from "@/components/sections/Benefits.astro";
+import SessionFormats from "@/components/sections/SessionFormats.astro";
+import Pricing from "@/components/sections/Pricing.astro";
+import PracticalInfo from "@/components/sections/PracticalInfo.astro";
+import Faq from "@/components/sections/Faq.astro";
+import CtaBanner from "@/components/sections/CtaBanner.astro";
+import Contact from "@/components/sections/Contact.astro";
+import { SITE } from "@/data/site";
+
+const title = "AD Sophrologie — Amandine Dabrowski, sophrologue en Haute-Savoie & à Genève";
+const description =
+  "Séances de sophrologie avec Amandine Dabrowski pour mieux gérer votre stress, vos émotions et retrouver confiance en vous, en Haute-Savoie et à Genève.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main id="contenu">
+    <Hero />
+    <About />
+    <WhatIsSophrology />
+    <Benefits />
+    <SessionFormats />
+    <Pricing />
+    <PracticalInfo />
+    <Faq />
+    <CtaBanner />
+    <Contact />
+  </main>
+  <Footer />
+
+  <script
+    type="application/ld+json"
+    is:inline
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: SITE.businessName,
+      description,
+      founder: {
+        "@type": "Person",
+        name: SITE.practitionerName,
+        jobTitle: "Sophrologue",
+      },
+      areaServed: SITE.zone,
+      url: SITE.siteUrl,
+      // __A_COMPLETER__ : ajouter address, telephone et openingHoursSpecification
+      // dès que ces informations seront disponibles, pour renforcer le SEO local.
+    })}
+  />
+</BaseLayout>

@@ -1,0 +1,128 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+
+/**
+ * Formulaire prêt pour Netlify Forms (détection automatique au build via
+ * data-netlify + le champ caché form-name, sans backend à écrire).
+ *
+ * Déployé ailleurs que sur Netlify, l'attribut data-netlify sera ignoré :
+ * il faudra alors brancher un service tiers (ex. Formspree, Web3Forms) via
+ * une variable d'environnement, ou une fonction serverless dédiée. Voir la
+ * section "Roadmap" fournie en fin de projet.
+ */
+---
+
+<section id="contact" class="section-padding">
+  <div class="container-site grid gap-14 lg:grid-cols-2">
+    <div>
+      <SectionHeading align="left" eyebrow="Contact" title="Prendre contact" />
+      <p class="mt-6 max-w-md text-lg leading-relaxed text-sage-700">
+        Une question, une envie d'échanger avant de vous lancer ? Écrivez-moi via le formulaire, je vous
+        réponds au plus vite.
+      </p>
+    </div>
+
+    <form
+      name="contact"
+      method="POST"
+      action="/merci"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="space-y-5 rounded-3xl border border-sage-200 bg-sage-50 p-8"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>
+          Ne pas remplir ce champ&nbsp;: <input name="bot-field" tabindex="-1" autocomplete="off" />
+        </label>
+      </p>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="name" class="mb-1.5 block text-sm font-medium text-sage-800">Nom complet</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            class="w-full rounded-xl border border-sage-300 bg-cream-50 px-4 py-3 text-sage-900 placeholder:text-sage-400 focus:border-sage-600"
+          />
+        </div>
+        <div>
+          <label for="email" class="mb-1.5 block text-sm font-medium text-sage-800">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            class="w-full rounded-xl border border-sage-300 bg-cream-50 px-4 py-3 text-sage-900 placeholder:text-sage-400 focus:border-sage-600"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="phone" class="mb-1.5 block text-sm font-medium text-sage-800">
+          Téléphone <span class="font-normal text-sage-600">(facultatif)</span>
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          class="w-full rounded-xl border border-sage-300 bg-cream-50 px-4 py-3 text-sage-900 placeholder:text-sage-400 focus:border-sage-600"
+        />
+      </div>
+
+      <div>
+        <label for="subject" class="mb-1.5 block text-sm font-medium text-sage-800">Motif de la demande</label>
+        <select
+          id="subject"
+          name="subject"
+          class="w-full rounded-xl border border-sage-300 bg-cream-50 px-4 py-3 text-sage-900 focus:border-sage-600"
+        >
+          <option value="Premier rendez-vous">Premier rendez-vous</option>
+          <option value="Séance individuelle">Séance individuelle</option>
+          <option value="Séance de groupe / atelier">Séance de groupe / atelier</option>
+          <option value="Autre question">Autre question</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message" class="mb-1.5 block text-sm font-medium text-sage-800">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="w-full rounded-xl border border-sage-300 bg-cream-50 px-4 py-3 text-sage-900 placeholder:text-sage-400 focus:border-sage-600"
+        ></textarea>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <input
+          id="consent"
+          name="consent"
+          type="checkbox"
+          required
+          class="mt-1 h-4 w-4 shrink-0 rounded border-sage-400 text-sage-700 focus:ring-sage-600"
+        />
+        <label for="consent" class="text-sm text-sage-700">
+          J'accepte que mes données soient utilisées pour me recontacter, conformément à la{" "}
+          <a href="/politique-confidentialite" class="underline hover:text-sage-900">
+            politique de confidentialité
+          </a>
+          .
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-full bg-sage-800 px-6 py-3.5 text-sm font-semibold text-cream-50 transition-colors hover:bg-sage-900"
+      >
+        Envoyer le message
+      </button>
+    </form>
+  </div>
+</section>

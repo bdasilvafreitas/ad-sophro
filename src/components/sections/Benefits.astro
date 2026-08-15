@@ -1,0 +1,47 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+import { BENEFITS, AUDIENCE } from "@/data/benefits";
+---
+
+<section id="bienfaits" class="section-padding bg-sage-50">
+  <div class="container-site">
+    <SectionHeading
+      eyebrow="Pour qui, pourquoi"
+      title="Des bénéfices concrets, à votre rythme"
+      description="Chaque accompagnement est adapté à votre situation. Voici les thématiques les plus souvent travaillées en sophrologie."
+    />
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        BENEFITS.map((benefit) => (
+          <div class="rounded-2xl bg-cream-50 p-7 shadow-soft">
+            <h3 class="text-lg font-medium text-sage-900">{benefit.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-sage-700">{benefit.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 rounded-3xl bg-sage-800 p-8 sm:p-12">
+      <h3 class="font-serif text-2xl text-cream-50">Ces accompagnements s'adressent notamment à :</h3>
+      <ul class="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {
+          AUDIENCE.map((item) => (
+            <li class="flex items-start gap-3 text-sage-100">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="mt-0.5 shrink-0" aria-hidden="true">
+                <path
+                  d="M5 12.5 10 17l9-10"
+                  stroke="#D8BD9B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

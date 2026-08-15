@@ -1,0 +1,32 @@
+---
+/**
+ * Marqueur visuel + littéral pour toute information métier non fournie.
+ * Garder le texte "__A_COMPLETER__" tel quel : il sert de repère (recherche
+ * plein texte) pour retrouver rapidement tout ce qu'il reste à renseigner.
+ */
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label, class: className = "" } = Astro.props;
+---
+
+<span
+  class:list={[
+    "inline-flex items-center gap-1.5 rounded-full border border-dashed border-sand-600 bg-sand-100 px-3 py-1 font-mono text-xs text-sand-800",
+    className,
+  ]}
+  title={label ? `À compléter : ${label}` : "Information à compléter"}
+>
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0">
+    <path
+      d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"
+      stroke="currentColor"
+      stroke-width="1.6"
+      stroke-linejoin="round"
+    ></path>
+    <path d="M12 8v5M12 16.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+  </svg>
+  __A_COMPLETER__{label ? ` (${label})` : ""}
+</span>

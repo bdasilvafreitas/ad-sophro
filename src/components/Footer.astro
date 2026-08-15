@@ -1,0 +1,97 @@
+---
+import Logo from "@/components/Logo.astro";
+import ToComplete from "@/components/ToComplete.astro";
+import { SITE, NAV_LINKS } from "@/data/site";
+
+const year = new Date().getFullYear();
+const hasSocial = Object.values(SITE.social).some((v) => v && v !== "__A_COMPLETER__");
+---
+
+<footer class="bg-sage-800 text-cream-50">
+  <div class="container-site grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.2fr_1fr_1fr]">
+    <div>
+      <Logo variant="footer" />
+      <p class="mt-5 max-w-sm text-sm leading-relaxed text-sage-200">
+        Accompagnement en sophrologie pour retrouver calme, équilibre et confiance, en {SITE.zone}.
+      </p>
+      {
+        hasSocial && (
+          <ul class="mt-6 flex gap-4">
+            {Object.entries(SITE.social).map(([key, value]) =>
+              value && value !== "__A_COMPLETER__" ? (
+                <li>
+                  <a href={value} class="text-sage-200 underline hover:text-cream-50">
+                    {key}
+                  </a>
+                </li>
+              ) : null,
+            )}
+          </ul>
+        )
+      }
+    </div>
+
+    <div>
+      <h2 class="font-sans text-sm font-semibold tracking-widest text-cream-50 uppercase">Navigation</h2>
+      <ul class="mt-5 space-y-3">
+        {
+          NAV_LINKS.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-sage-200 hover:text-cream-50">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="#contact" class="text-sm text-sage-200 hover:text-cream-50">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-sans text-sm font-semibold tracking-widest text-cream-50 uppercase">Contact</h2>
+      <ul class="mt-5 space-y-3 text-sm text-sage-200">
+        <li>
+          {
+            SITE.contact.email === "__A_COMPLETER__" ? (
+              <ToComplete label="email" />
+            ) : (
+              <a href={`mailto:${SITE.contact.email}`} class="hover:text-cream-50">
+                {SITE.contact.email}
+              </a>
+            )
+          }
+        </li>
+        <li>
+          {
+            SITE.contact.phone === "__A_COMPLETER__" ? (
+              <ToComplete label="téléphone" />
+            ) : (
+              <a href={`tel:${SITE.contact.phone}`} class="hover:text-cream-50">
+                {SITE.contact.phone}
+              </a>
+            )
+          }
+        </li>
+        <li>
+          {SITE.contact.address === "__A_COMPLETER__" ? <ToComplete label="adresse" /> : SITE.contact.address}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-sage-700">
+    <div
+      class="container-site flex flex-col gap-3 py-6 text-xs text-sage-200 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} {SITE.businessName} — {SITE.practitionerName}. Tous droits réservés.</p>
+      <ul class="flex gap-6">
+        <li><a href="/mentions-legales" class="hover:text-cream-50">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite" class="hover:text-cream-50">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

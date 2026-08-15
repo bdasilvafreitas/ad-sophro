@@ -1,0 +1,84 @@
+---
+import Logo from "@/components/Logo.astro";
+import Button from "@/components/Button.astro";
+import { NAV_LINKS } from "@/data/site";
+---
+
+<header class="sticky top-0 z-50 border-b border-sage-200/70 bg-cream-50/90 backdrop-blur">
+  <div class="container-site flex h-20 items-center justify-between">
+    <a href="#accueil" class="rounded-sm" aria-label="AD Sophrologie, retour à l'accueil">
+      <Logo variant="header" />
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden lg:block">
+      <ul class="flex items-center gap-8">
+        {
+          NAV_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm font-medium text-sage-800 transition-colors hover:text-sand-800"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hidden lg:block">
+      <Button href="#contact" variant="primary">Prendre contact</Button>
+    </div>
+
+    <details class="group relative lg:hidden">
+      <summary
+        class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-sage-300 text-sage-800 [&::-webkit-details-marker]:hidden"
+        aria-label="Ouvrir le menu"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+          class="block group-open:hidden"
+        >
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          ></path>
+        </svg>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+          class="hidden group-open:block"
+        >
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </summary>
+      <nav
+        aria-label="Navigation principale"
+        class="absolute top-14 right-0 w-64 rounded-2xl border border-sage-200 bg-cream-50 p-5 shadow-card"
+      >
+        <ul class="flex flex-col gap-4">
+          {
+            NAV_LINKS.map((link) => (
+              <li>
+                <a href={link.href} class="block text-base font-medium text-sage-800">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="pt-2">
+            <Button href="#contact" variant="primary" class="w-full">
+              Prendre contact
+            </Button>
+          </li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

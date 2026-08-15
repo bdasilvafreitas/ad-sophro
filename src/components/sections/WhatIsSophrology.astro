@@ -1,0 +1,44 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+
+const PILLARS = [
+  {
+    title: "Respiration",
+    text: "Des exercices respiratoires simples pour relâcher les tensions et calmer le système nerveux.",
+  },
+  {
+    title: "Relaxation dynamique",
+    text: "Une prise de conscience progressive du corps, en mouvement ou immobile, pour évacuer les tensions.",
+  },
+  {
+    title: "Visualisation",
+    text: "Des images mentales positives pour mobiliser ses ressources face à une situation difficile.",
+  },
+] as const;
+---
+
+<section id="sophrologie" class="section-padding">
+  <div class="container-site">
+    <SectionHeading
+      eyebrow="Comprendre la méthode"
+      title="Qu'est-ce que la sophrologie ?"
+      description="Une méthode née dans les années 1960, à la croisée de la relaxation occidentale et de techniques d'observation de soi orientales, aujourd'hui largement utilisée pour le développement personnel et le bien-être."
+    />
+
+    <div class="mt-16 grid gap-8 sm:grid-cols-3">
+      {
+        PILLARS.map((pillar) => (
+          <div class="rounded-2xl border border-sage-200 bg-cream-50 p-8 shadow-soft">
+            <h3 class="text-xl font-medium text-sage-900">{pillar.title}</h3>
+            <p class="mt-3 text-base leading-relaxed text-sage-700">{pillar.text}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mx-auto mt-10 max-w-2xl text-center text-sm text-sage-600">
+      La sophrologie est un accompagnement complémentaire : elle ne remplace ni un diagnostic ni un
+      traitement médical ou psychothérapeutique.
+    </p>
+  </div>
+</section>

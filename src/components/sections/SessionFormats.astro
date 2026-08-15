@@ -1,0 +1,38 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+import ToComplete from "@/components/ToComplete.astro";
+import Button from "@/components/Button.astro";
+import { SESSION_STEPS } from "@/data/sessions";
+---
+
+<section id="accompagnements" class="section-padding">
+  <div class="container-site">
+    <SectionHeading
+      eyebrow="Le déroulement"
+      title="Comment se déroule une séance ?"
+      description="À titre indicatif, une séance de sophrologie suit généralement les grandes étapes suivantes."
+    />
+
+    <ol class="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        SESSION_STEPS.map((step, index) => (
+          <li class="relative rounded-2xl border border-sage-200 bg-cream-50 p-6">
+            <span class="font-script text-4xl text-sand-700">{index + 1}</span>
+            <h3 class="mt-2 text-lg font-medium text-sage-900">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-sage-700">{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-16 rounded-2xl border border-dashed border-sand-500/60 bg-sand-100/40 p-8 text-center">
+      <p class="text-sage-700">
+        Les formats de séance proposés (individuel, groupe, thématique), leur durée et leurs modalités
+        précises seront détaillés ici : <ToComplete label="offre détaillée des séances" />
+      </p>
+      <div class="mt-6">
+        <Button href="#contact" variant="secondary">Me contacter pour en discuter</Button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+---
+/**
+ * Lockup de marque provisoire (mark + wordmark texte), construit à partir de la palette
+ * et de la typographie déduites du logo fourni.
+ *
+ * Le fichier du logo original n'a pas pu être récupéré comme asset binaire dans cet
+ * environnement : remplacer ci-dessous par le vrai logo (ex. /logo.svg) dès qu'il est
+ * disponible, en conservant ses proportions d'origine.
+ */
+interface Props {
+  variant?: "header" | "footer" | "hero";
+  class?: string;
+}
+
+const { variant = "header", class: className = "" } = Astro.props;
+
+const markSize = variant === "hero" ? 56 : 40;
+const wordmarkClass =
+  variant === "hero"
+    ? "text-5xl sm:text-6xl"
+    : variant === "footer"
+      ? "text-3xl text-cream-50"
+      : "text-3xl";
+---
+
+<span class:list={["inline-flex items-center gap-3", className]}>
+  <svg
+    width={markSize}
+    height={markSize}
+    viewBox="0 0 64 64"
+    aria-hidden="true"
+    class="shrink-0"
+  >
+    <circle
+      cx="32"
+      cy="32"
+      r="24"
+      fill="none"
+      stroke={variant === "footer" ? "#AEC0B5" : "#4F6259"}
+      stroke-width="1.4"
+      stroke-dasharray="147 4"
+    ></circle>
+    <path
+      d="M32 20c-4.5 3.2-8 7.6-8 12.8 0 5.3 3.6 8.6 8 8.6s8-3.3 8-8.6c0-5.2-3.5-9.6-8-12.8Z"
+      fill="none"
+      stroke={variant === "footer" ? "#E5D3BA" : "#4F6259"}
+      stroke-width="1.8"
+      stroke-linecap="round"
+    ></path>
+    <circle
+      cx="32"
+      cy="18.5"
+      r="3.6"
+      fill="none"
+      stroke={variant === "footer" ? "#D8BD9B" : "#B98F63"}
+      stroke-width="1.6"
+    ></circle>
+  </svg>
+  <span class="leading-none">
+    <span class={`font-script ${wordmarkClass} ${variant === "footer" ? "text-cream-50" : "text-sage-800"}`}>
+      Sophrologie
+    </span>
+    <span
+      class={`block font-sans text-[0.65rem] tracking-[0.3em] uppercase ${variant === "footer" ? "text-sage-200" : "text-sage-600"}`}
+    >
+      Amandine Dabrowski
+    </span>
+  </span>
+</span>

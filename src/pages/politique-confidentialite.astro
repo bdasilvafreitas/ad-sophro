@@ -1,0 +1,130 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import ToComplete from "@/components/ToComplete.astro";
+import { SITE } from "@/data/site";
+
+/**
+ * Base standard RGPD pour un site vitrine avec formulaire de contact.
+ * À faire valider (durées de conservation, base légale retenue, etc.)
+ * avant mise en ligne — voir cnil.fr pour les ressources officielles.
+ */
+---
+
+<BaseLayout
+  title="Politique de confidentialité — AD Sophrologie"
+  description="Comment AD Sophrologie collecte et traite vos données personnelles via ce site."
+>
+  <Header />
+  <main id="contenu">
+    <section class="section-padding">
+      <div class="container-site max-w-3xl">
+        <h1 class="text-3xl font-medium text-sage-900 sm:text-4xl">Politique de confidentialité</h1>
+        <p class="mt-4 text-sage-600">Dernière mise à jour : <ToComplete label="date de mise à jour" /></p>
+
+        <div class="mt-10 space-y-10 text-sage-700">
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">1. Responsable du traitement</h2>
+            <p class="mt-3 leading-relaxed">
+              {SITE.practitionerName} ({SITE.businessName}) est responsable du traitement des données
+              collectées sur ce site. Pour toute question, contactez :{" "}
+              {
+                SITE.contact.email === "__A_COMPLETER__" ? (
+                  <ToComplete label="email de contact RGPD" />
+                ) : (
+                  SITE.contact.email
+                )
+              }
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">2. Données collectées</h2>
+            <p class="mt-3 leading-relaxed">
+              Le formulaire de contact du site collecte votre nom, votre adresse email, votre numéro de
+              téléphone (facultatif), le motif de votre demande et le contenu de votre message.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">3. Finalité du traitement</h2>
+            <p class="mt-3 leading-relaxed">
+              Ces données sont utilisées exclusivement pour répondre à votre demande de contact ou de
+              rendez-vous. Elles ne sont ni vendues, ni cédées à des tiers à des fins commerciales.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">4. Base légale</h2>
+            <p class="mt-3 leading-relaxed">
+              Le traitement repose sur votre consentement, exprimé lors de l'envoi du formulaire de
+              contact.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">5. Durée de conservation</h2>
+            <p class="mt-3 leading-relaxed">
+              Les données transmises via le formulaire sont conservées{" "}
+              <ToComplete label="durée de conservation des données du formulaire" />.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">6. Hébergement des données</h2>
+            <p class="mt-3 leading-relaxed">
+              Les données transitant par le formulaire sont hébergées par{" "}
+              <ToComplete label="prestataire technique du formulaire (ex. Netlify)" />.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">7. Vos droits</h2>
+            <p class="mt-3 leading-relaxed">
+              Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi
+              Informatique et Libertés, vous disposez d'un droit d'accès, de rectification,
+              d'effacement, de limitation et d'opposition concernant vos données personnelles. Vous
+              pouvez exercer ces droits en écrivant à{" "}
+              {
+                SITE.contact.email === "__A_COMPLETER__" ? (
+                  <ToComplete label="email de contact RGPD" />
+                ) : (
+                  SITE.contact.email
+                )
+              }
+              . Vous disposez également du droit d'introduire une réclamation auprès de la{" "}
+              <a
+                href="https://www.cnil.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline hover:text-sage-900"
+              >
+                CNIL
+              </a>
+              .
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">8. Confidentialité des échanges en séance</h2>
+            <p class="mt-3 leading-relaxed">
+              Les informations échangées lors des séances de sophrologie relèvent du secret
+              professionnel et de la déontologie du métier, indépendamment du présent site internet.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">9. Cookies et mesure d'audience</h2>
+            <p class="mt-3 leading-relaxed">
+              Ce site n'utilise aucun cookie de suivi ni d'outil de mesure d'audience à ce jour. Si un
+              outil respectueux de la vie privée venait à être installé, cette page serait mise à jour
+              en conséquence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
