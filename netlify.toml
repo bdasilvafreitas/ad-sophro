@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Formulaire de contact (src/components/sections/Contact.astro) : détecté
+# automatiquement par Netlify au build grâce à data-netlify="true" et au
+# champ caché form-name, sans configuration supplémentaire ici.
+#
+# La page 404.html générée par Astro est servie automatiquement par
+# Netlify pour toute URL inconnue, sans règle de redirection nécessaire.
