@@ -1,0 +1,33 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+import Button from "@/components/Button.astro";
+import { BUSINESS_FORMATS } from "@/data/business";
+---
+
+<section id="formats" class="section-padding">
+  <div class="container-site">
+    <SectionHeading eyebrow="Nos formats" title="Une intervention adaptée à votre organisation" />
+
+    <div class="mt-16 grid gap-8 sm:grid-cols-3">
+      {
+        BUSINESS_FORMATS.map((format) => (
+          <div class="rounded-2xl border border-sage-200 bg-cream-50 p-8 shadow-soft">
+            <h3 class="text-xl font-medium text-sage-900">{format.title}</h3>
+            <p class="mt-3 text-base leading-relaxed text-sage-700">{format.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 rounded-2xl border border-dashed border-sand-500/60 bg-sand-100/40 p-8 text-center">
+      <p class="text-sage-700">
+        Durée, nombre de participants et tarif sont définis ensemble selon votre besoin, sur devis. Ce
+        type d'intervention peut être financé via votre budget QVCT, votre CSE ou votre plan de
+        développement des compétences (OPCO) — renseignez-vous auprès de votre service RH.
+      </p>
+      <div class="mt-6">
+        <Button href="/#contact" variant="secondary">Demander un devis</Button>
+      </div>
+    </div>
+  </div>
+</section>

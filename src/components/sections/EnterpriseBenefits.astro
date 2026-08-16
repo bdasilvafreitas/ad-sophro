@@ -1,0 +1,25 @@
+---
+import SectionHeading from "@/components/SectionHeading.astro";
+import { BUSINESS_BENEFITS } from "@/data/business";
+---
+
+<section class="section-padding bg-sage-50">
+  <div class="container-site">
+    <SectionHeading
+      eyebrow="Pourquoi la sophrologie en entreprise"
+      title="Un outil concret au service de vos équipes"
+      description="La sophrologie s'intègre de plus en plus aux démarches de qualité de vie et des conditions de travail (QVCT) et de prévention des risques psychosociaux, aux côtés des dispositifs déjà en place dans votre organisation."
+    />
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2">
+      {
+        BUSINESS_BENEFITS.map((benefit) => (
+          <div class="rounded-2xl bg-cream-50 p-7 shadow-soft">
+            <h3 class="text-lg font-medium text-sage-900">{benefit.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-sage-700">{benefit.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import EnterpriseHero from "@/components/sections/EnterpriseHero.astro";
+import EnterpriseBenefits from "@/components/sections/EnterpriseBenefits.astro";
+import EnterpriseFormats from "@/components/sections/EnterpriseFormats.astro";
+import EnterpriseProcess from "@/components/sections/EnterpriseProcess.astro";
+import CtaBanner from "@/components/sections/CtaBanner.astro";
+import { SITE } from "@/data/site";
+
+const title = `Sophrologie en entreprise — ${SITE.businessName}`;
+const description =
+  "Ateliers, cycles de séances et conférences de sensibilisation pour accompagner vos équipes dans la gestion du stress et la qualité de vie au travail, en Haute-Savoie et à Genève.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main id="contenu">
+    <EnterpriseHero />
+    <EnterpriseBenefits />
+    <EnterpriseFormats />
+    <EnterpriseProcess />
+    <CtaBanner
+      title="Parlons de votre projet"
+      description="Décrivez-moi votre contexte et vos objectifs : je reviens vers vous avec une proposition adaptée."
+      buttonLabel="Demander un devis"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
