@@ -14,6 +14,7 @@ import CtaBanner from "@/components/sections/CtaBanner.astro";
 import Contact from "@/components/sections/Contact.astro";
 import Button from "@/components/Button.astro";
 import { SITE } from "@/data/site";
+import { PRICING_ROWS } from "@/data/pricing";
 
 const title = "AD Sophrologie — Amandine Dabrowski, sophrologue en Haute-Savoie & à Genève";
 const description =
@@ -71,6 +72,13 @@ const description =
       },
       areaServed: SITE.zone,
       url: SITE.siteUrl,
+      makesOffer: PRICING_ROWS.filter((row) => row.amount !== null).map((row) => ({
+        "@type": "Offer",
+        name: row.label,
+        price: row.amount,
+        priceCurrency: "EUR",
+        ...("note" in row && row.note ? { description: row.note } : {}),
+      })),
       // __A_COMPLETER__ : ajouter address, telephone et openingHoursSpecification
       // dès que ces informations seront disponibles, pour renforcer le SEO local.
     })}
