@@ -28,10 +28,10 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: "#a-propos", label: "Qui suis-je" },
-  { href: "#sophrologie", label: "La sophrologie" },
-  { href: "#accompagnements", label: "Séances" },
-  { href: "#tarifs", label: "Tarifs" },
-  { href: "#infos-pratiques", label: "Infos pratiques" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#a-propos", label: "Qui suis-je" },
+  { href: "/#sophrologie", label: "La sophrologie" },
+  { href: "/#accompagnements", label: "Séances" },
+  { href: "/#tarifs", label: "Tarifs" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/entreprises", label: "Entreprises" },
 ] as const;

@@ -12,6 +12,7 @@ import PracticalInfo from "@/components/sections/PracticalInfo.astro";
 import Faq from "@/components/sections/Faq.astro";
 import CtaBanner from "@/components/sections/CtaBanner.astro";
 import Contact from "@/components/sections/Contact.astro";
+import Button from "@/components/Button.astro";
 import { SITE } from "@/data/site";
 
 const title = "AD Sophrologie — Amandine Dabrowski, sophrologue en Haute-Savoie & à Genève";
@@ -28,6 +29,25 @@ const description =
     <Benefits />
     <SessionFormats />
     <Pricing />
+
+    <section class="pb-16 sm:pb-20">
+      <div class="container-site">
+        <div
+          class="flex flex-col items-center justify-between gap-6 rounded-2xl border border-sage-200 bg-cream-50 p-8 text-center sm:flex-row sm:text-left"
+        >
+          <div>
+            <h2 class="text-xl font-medium text-sage-900">Vous représentez une entreprise ?</h2>
+            <p class="mt-1 text-sage-700">
+              Ateliers, cycles de séances et conférences pour accompagner vos équipes.
+            </p>
+          </div>
+          <Button href="/entreprises" variant="ghost" class="shrink-0">
+            Découvrir l'offre entreprises
+          </Button>
+        </div>
+      </div>
+    </section>
+
     <PracticalInfo />
     <Faq />
     <CtaBanner />
