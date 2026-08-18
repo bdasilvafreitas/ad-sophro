@@ -2,13 +2,7 @@
 import SectionHeading from "@/components/SectionHeading.astro";
 import ToComplete from "@/components/ToComplete.astro";
 import Button from "@/components/Button.astro";
-
-const ROWS = [
-  { label: "Séance individuelle (1re séance)" },
-  { label: "Séance individuelle (suivi)" },
-  { label: "Séance de groupe" },
-  { label: "Forfait / abonnement" },
-] as const;
+import { PRICING_ROWS } from "@/data/pricing";
 ---
 
 <section id="tarifs" class="section-padding bg-sage-50">
@@ -26,11 +20,22 @@ const ROWS = [
         </thead>
         <tbody>
           {
-            ROWS.map((row) => (
+            PRICING_ROWS.map((row) => (
               <tr class="border-b border-sage-100 last:border-none">
                 <td class="px-6 py-4 text-sage-800">{row.label}</td>
                 <td class="px-6 py-4">
-                  <ToComplete />
+                  {row.amount !== null ? (
+                    <>
+                      <span class="font-medium text-sage-900">
+                        {row.amount} € {"unit" in row && row.unit}
+                      </span>
+                      {"note" in row && row.note && (
+                        <span class="block text-xs text-sage-600">{row.note}</span>
+                      )}
+                    </>
+                  ) : (
+                    <ToComplete />
+                  )}
                 </td>
               </tr>
             ))
